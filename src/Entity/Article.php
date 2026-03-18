@@ -1,6 +1,5 @@
 <?php
 
-use Date;
 
 class Article
 {
@@ -8,12 +7,22 @@ class Article
     private int $id;
     private string $title;
     private string $description;
-    private Date $createdAt;
+    private \Date $createdAt;
     private string $image;
     private ?Category $category;
 
     //Constructeur
-    public function __construct() {}
+    public function __construct(
+        string $title,
+        string $description,
+        \Date $createdAt,
+        string $image
+    ) {
+        $this->title = $title;
+        $this->description = $description;
+        $this->createdAt = $createdAt;
+        $this->image = $image;
+    }
 
     //Getters et Setters
     public function getId(): int {
@@ -40,11 +49,11 @@ class Article
         $this->description = $description;
     }
 
-    public function getCreatedAt(): Date {
+    public function getCreatedAt(): \Date {
         return $this->createdAt;
     }
 
-    public function setCreatedAt(Date $createdAt): void {
+    public function setCreatedAt(\Date $createdAt): void {
         $this->createdAt = $createdAt;
     }
 
@@ -64,3 +73,14 @@ class Article
         $this->category = $category;
     }
 }
+
+//inscription
+$user = new Account("email", "password");
+
+$user->setImage("image");
+$user->setFirstname("firstname");
+$user->setLastname("lastname");
+
+
+//connexion
+$adm = new Account("email", "password");
